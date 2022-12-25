@@ -15,6 +15,7 @@ class TypeController extends Controller
         ]);
         if ($validator->fails()) 
             return response()->json($validator->errors()->all());
+            
         try{
             Excel::import(new TypeImport, $request->file('file'));
             return response()->json([ 'status' => 'Success' ]);
